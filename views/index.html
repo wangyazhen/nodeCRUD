@@ -15,7 +15,7 @@
 				<form class="form-horizontal" role="form" id="userForm" action="/users/user" method="post">
 				  <div class="form-group">
 				    <label for="username">用户名</label>
-				    <input type="text" class="form-control" id="username" name="username" value="王亚振" placeholder="Enter username">
+				    <input type="text" class="form-control" id="username" name="username" value="王亚振123" placeholder="Enter username">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">年龄</label>
@@ -41,7 +41,11 @@
 			$('#userForm').on('submit', function(event) {
 				event.preventDefault();
 				$(this).ajaxSubmit({
-					target: '#userResultsDiv'
+					target: '#userResultsDiv',
+					success: function(data) {
+						console.log('Ajax 成功' ,data);
+						$('#userResultsDiv').html('响应结果: ' + JSON.stringify(data));
+					}
 				});
 			});
 		</script>

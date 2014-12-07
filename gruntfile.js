@@ -23,21 +23,29 @@ module.exports = function(grunt) {
 
 	    nodemon: {
 	      dev: {
+	      	script: 'app.js',
 	        options: {
-	          file: 'app.js',
 	          args: [],
-	          //ignoredFiles: ['node_modules/**', '*.log'],
+	          ignoredFiles: ['node_modules/**', '*.log'],
 	          watchedExtensions: ['js'],
 	          watchedFolders: ['./'],
-	          //debug: true,
+	          debug: true,
 	          delayTime: 1,
 	          env: {
 	            PORT: 3000
-	          }
-	          //cwd: __dirname
+	          },
+	          cwd: __dirname
 	        }
 	      }
 	    },
+
+        /*nodemon: {
+          dev: {
+            script: 'app.js',
+            ignore: ['node_modules/**'],
+            delay: 1000
+          }
+        },*/
 
 	    concurrent: {
 	      tasks: ['nodemon', 'watch', 'jshint'],
@@ -55,7 +63,8 @@ module.exports = function(grunt) {
 
   	grunt.option('force', true);
 
-  	grunt.registerTask('default', ['concurrent']);
+    	 grunt.registerTask('default', ['concurrent']);
+//  grunt.registerTask('default', ['nodemon']);
 };
 
 /*

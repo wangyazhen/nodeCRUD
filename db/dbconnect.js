@@ -7,7 +7,7 @@ var dbConfig = {
 
 console.log('数据库连接 start : %o', dbConfig.mongodb);
 mongoose.connect(dbConfig.mongodb, function(error, result) {
-	if (error) {		
+	if (error) {
 		console.error('数据库连接失败： %o, %o', dbConfig.mongodb, error);
 	} else {
 		console.info('数据库连接成功: %o', result);
